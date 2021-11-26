@@ -1,0 +1,20 @@
+name: multistep_example
+
+conda_env: conda.yaml
+
+entry_points:
+  
+  download_data:
+    command: "python download_data.py"
+  
+  train_data:
+    parameters:
+        data_path: path
+    command: "python train_data.py --data-path {data_path}"
+  
+  main:
+    parameters:
+        max_iter: {type: int, default: 10}
+        keras_units: {type: int, default: 20}
+    command: "python main.py --max-iter {max_iter} --keras-units {keras_units}"
+                        

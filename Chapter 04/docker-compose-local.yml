@@ -1,0 +1,37 @@
+version: '2.1'
+services:
+    postgres:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow
+        # Uncomment these lines to persist data on the local filesystem.
+        #     - PGDATA=/var/lib/postgresql/data/pgdata
+        # volumes:
+        #     - ./pgdata:/var/lib/postgresql/data/pgdata
+
+    webserver:
+        image: puckel/docker-airflow:1.10.9
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+            - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql://airflow:airflow@postgres:5432/airflow
+            - AIRFLOW__WEBSERVER__EXPOSE_CONFIG=True
+            - AIRFLOW__CORE__LOAD_EXAMPLES=False
+            - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=True
+            - AIRFLOW__WEBSERVER__DAG_DEFAULT_VIEW=graph
+            - AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL=10
+        volumes:
+            - ./dags:/usr/local/airflow/dags
+            - ./airflow.cfg:/usr/local/airflow/airflow.cfg
+        ports:
+            - "8080:8080"
+        command: webserver
+        healthcheck:
+            test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+            interval: 30s
+            timeout: 30s
+            retries: 3

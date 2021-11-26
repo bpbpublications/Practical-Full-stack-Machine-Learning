@@ -1,0 +1,56 @@
+{
+  "artifacts": [],
+  "command": "run",
+  "experiment": {
+    "base_dir": "/Users/alokumar0/Documents/Projects/personal/PacktCourse/Section-1/video 1.2/code",
+    "dependencies": [
+      "ipython==7.6.1",
+      "numpy==1.16.4",
+      "sacred==0.7.5",
+      "scikit-learn==0.21.2"
+    ],
+    "mainfile": null,
+    "name": "svm",
+    "repositories": [],
+    "sources": []
+  },
+  "heartbeat": "2019-08-31T21:59:23.675992",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+    "hostname": "WKMIN6388196",
+    "os": [
+      "Darwin",
+      "Darwin-18.7.0-x86_64-i386-64bit"
+    ],
+    "python_version": "3.7.3"
+  },
+  "meta": {
+    "command": "run",
+    "options": {
+      "--beat_interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print_config": false,
+      "--priority": null,
+      "--queue": false,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false
+    }
+  },
+  "resources": [],
+  "result": 0.6228070175438597,
+  "start_time": "2019-08-31T21:59:23.647768",
+  "status": "COMPLETED",
+  "stop_time": "2019-08-31T21:59:23.674292"
+}
